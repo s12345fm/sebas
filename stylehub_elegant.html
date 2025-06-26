@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleHub - Moda Digital</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fondo general con degradado elegante */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        /* Encabezado */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ecf0f1;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            margin: 0 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #3498db;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Contenedores generales con fondos elegantes */
+        .inicio {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            color: #2c3e50;
+        }
+        .productos {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #2c3e50;
+        }
+        .carrito {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            color: #2c3e50;
+        }
+        .contacto {
+            background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
+            color: #2c3e50;
+        }
+        .nosotros {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f6fa 100%);
+            color: #2c3e50;
+        }
+
+        /* Estructura común */
+        .inicio, .productos, .carrito, .contacto, .nosotros {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px 5%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Títulos */
+        .inicio h2, .productos h2, .carrito h2, .contacto h2, .nosotros h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        /* Imagen principal */
+        .inicio img {
+            margin-top: 20px;
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Banner promocional */
+        .banner-promo {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .banner-promo h3 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .banner-promo p {
+            font-size: 18px;
+            color: #ecf0f1;
+        }
+
+        /* Contenedor de productos */
+        .contenedor-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        /* Tarjeta producto */
+        .producto {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .producto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: #3498db;
+        }
+
+        /* Imagen producto */
+        .producto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Info producto */
+        .producto h3 {
+            margin: 15px 0 10px 0;
+            font-size: 24px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .producto .marca {
+            color: #7f8c8d;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .producto p {
+            color: #5d6d7e;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .precio {
+            color: #27ae60;
+            font-weight: 700;
+            margin: 15px 0;
+            font-size: 22px;
+        }
+
+        .precio-anterior {
+            text-decoration: line-through;
+            color: #95a5a6;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        /* Botones */
+        button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            background: linear-gradient(135deg, #2980b9, #1f618d);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Formulario contacto */
+        .contacto form {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+        }
+
+        .contacto input, .contacto textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contacto input:focus, .contacto textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            background-color: white;
+        }
+
+        /* Carrito */
+        .carrito-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+        }
+
+        .carrito-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .carrito-item button {
+            width: auto;
+            padding: 8px 15px;
+            margin: 0;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .carrito-item button:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+        }
+
+        .carrito-empty {
+            text-align: center;
+            padding: 50px;
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+
+        .carrito-total {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* Pie de página */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #5dade2;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+            
+            .contenedor-productos {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .producto {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Contador del carrito */
+        #cart-count {
+            background: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Botones específicos */
+        .btn-vaciar {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
+        }
+
+        .btn-vaciar:hover {
+            background: linear-gradient(135deg, #7f8c8d, #6c7b7d) !important;
+        }
+
+        .btn-comprar {
+            background: linear-gradient(135deg, #27ae60, #229954) !important;
+        }
+
+        .btn-comprar:hover {
+            background: linear-gradient(135deg, #229954, #1e8449) !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>StyleHub</h1>
+        <nav>
+            <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
+            <a href="#" onclick="mostrarSeccion('productos')">Productos</a>
+            <a href="#" onclick="mostrarSeccion('carrito')">Carrito (<span id="cart-count">0</span>)</a>
+            <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
+            <a href="#" onclick="mostrarSeccion('nosotros')">Sobre Nosotros</a>
+        </nav>
+    </header>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="inicio">
+        <h2>Bienvenido a StyleHub</h2>
+        <p>Descubre la moda que define tu estilo. En StyleHub encontrarás las mejores marcas, 
+        las últimas tendencias y piezas exclusivas que transformarán tu guardarropa. 
+        Nuestra pasión es vestirte con confianza, elegancia y personalidad única.</p>
+        
+        <div class="banner-promo">
+            <h3>🔥 OFERTA ESPECIAL</h3>
+            <p>Hasta 50% de descuento en marcas seleccionadas • Envío gratis en compras superiores a $100</p>
+        </div>
+        
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tienda de moda moderna">
+    </section>
+
+    <!-- Sección Productos -->
+    <section id="productos" class="productos" style="display:none;">
+        <h2>Catálogo de Moda</h2>
+        <div class="contenedor-productos">
+            <div class="producto">
+                <div class="marca">NIKE</div>
+                <h3>Air Force 1 Blancas</h3>
+                <p>Zapatillas clásicas de cuero premium, perfectas para cualquier ocasión</p>
+                <div class="precio">
+                    <span class="precio-anterior">$120</span>
+                    $89
+                </div>
+                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nike Air Force 1">
+                <button onclick="agregarAlCarrito('Nike Air Force 1', 89)">Agregar al carrito</button>
+            </div>
+
+            <div class="producto">
+                <div class="marca">ADIDAS</div>
+                <h3>Sudadera Trefoil</h3>
+                <p>Sudadera con capucha, algodón orgánico, diseño icónico</p>
+                <div class="precio">$65</div>
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sudadera Adidas">
+                <button onclick="agregarAlCarrito('Adidas Sudadera Trefoil', 65)">Agregar al carrito</button>
+            </div>
+
+            <div class="producto">
+                <div class="marca">LEVI'S</div>
+                <h3>Jeans 501 Original</h3>
+                <p>El jean clásico que nunca pasa de moda, corte recto, 100% algodón</p>
+                <div class="precio">
+                    <span class="precio-anterior">$98</span>
+                    $75
+                </div>
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jeans Levi's">
+                <button onclick="agregarAlCarrito('Levis Jeans 501', 75)">Agregar al carrito</button>
+            </div>
+
+            <div class="producto">
+                <div class="marca">H&M</div>
+                <h3>Vestido Floral</h3>
+                <p>Vestido midi con estampado floral, perfecto para primavera-verano</p>
+                <div class="precio">$45</div>
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestido H&M">
+                <button onclick="agregarAlCarrito('H&M Vestido Floral', 45)">Agregar al carrito</button>
+            </div>
+
+            <div class="producto">
+                <div class="marca">ZARA</div>
+                <h3>Blazer Estructurado</h3>
+                <p>Blazer elegante de corte moderno, ideal para oficina o eventos</p>
+                <div class="precio">$85</div>
+                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blazer Zara">
+                <button onclick="agregarAlCarrito('Zara Blazer Estructurado', 85)">Agregar al carrito</button>
+            </div>
+
+            <div class="producto">
+                <div class="marca">UNIQLO</div>
+                <h3>Camiseta Básica</h3>
+                <p>Pack de 3 camisetas básicas de algodón premium, colores variados</p>
+                <div class="precio">$35</div>
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camisetas Uniqlo">
+                <button onclick="agregarAlCarrito('Uniqlo Pack 3 Camisetas', 35)">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Carrito -->
+    <section id="carrito" class="carrito" style="display:none;">
+        <h2>Tu Carrito de Compras</h2>
+        <div class="carrito-container">
+            <div id="lista-carrito"></div>
+            <div id="total-carrito" class="carrito-total" style="display:none;"></div>
+            <button onclick="vaciarCarrito()" class="btn-vaciar" style="margin-top: 20px;">Vaciar Carrito</button>
+            <button onclick="procesarCompra()" class="btn-comprar" style="margin-top: 10px;">Procesar Compra</button>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contacto" style="display:none;">
+        <h2>Contáctanos</h2>
+        <form onsubmit="enviarFormulario(event)">
+            <input type="text" placeholder="Tu nombre completo" required>
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <input type="tel" placeholder="Tu teléfono">
+            <textarea placeholder="¿En qué podemos ayudarte?" required rows="5"></textarea>
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+        <div style="margin-top: 30px; text-align: center;">
+            <p><strong>📧 Email:</strong> info@stylehub.com</p>
+            <p><strong>📱 WhatsApp:</strong> +1 (555) 123-4567</p>
+            <p><strong>🕒 Horarios:</strong> Lun-Vie 9:00-18:00, Sáb 10:00-16:00</p>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="nosotros" style="display:none;">
+        <h2>Sobre StyleHub</h2>
+        <p>Somos StyleHub, tu destino digital para la moda contemporánea. Desde 2018, nos hemos especializado en curar las mejores piezas de las marcas más reconocidas del mundo, ofreciendo una experiencia de compra online excepcional.</p>
+        
+        <p><strong>Nuestra Misión:</strong> Democratizar la moda de calidad, haciendo que las mejores marcas y tendencias sean accesibles para todos, con la comodidad de comprar desde casa.</p>
+        
+        <p><strong>¿Por qué elegirnos?</strong></p>
+        <ul style="list-style: none; padding: 20px;">
+            <li>✅ Más de 500 marcas reconocidas</li>
+            <li>✅ Envío gratis en compras superiores a $100</li>
+            <li>✅ Devoluciones gratuitas hasta 30 días</li>
+            <li>✅ Atención al cliente 24/7</li>
+            <li>✅ Pagos seguros y múltiples métodos</li>
+            <li>✅ App móvil disponible</li>
+        </ul>
+        
+        <p>Con más de 50,000 clientes satisfechos y una calificación de 4.8/5 estrellas, somos la tienda de moda online de confianza que estabas buscando.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 StyleHub - Moda Digital | Síguenos en redes sociales</p>
+        <p>🛍️ <a href="#">Instagram</a> | 👗 <a href="#">TikTok</a> | 👔 <a href="#">Facebook</a></p>
+    </footer>
+
+    <script>
+        // Sistema de carrito mejorado
+        let carrito = [];
+        let seccionActual = 'inicio';
+
+        // Inicializar
+        actualizarContador();
+
+        function mostrarSeccion(seccion) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('section').forEach(s => s.style.display = 'none');
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(seccion).style.display = 'block';
+            
+            // Si es carrito, actualizar contenido
+            if (seccion === 'carrito') {
+                mostrarCarrito();
+            }
+            
+            seccionActual = seccion;
+        }
+
+        function agregarAlCarrito(producto, precio) {
+            const item = {
+                nombre: producto,
+                precio: precio,
+                id: Date.now() + Math.random()
+            };
+            
+            carrito.push(item);
+            actualizarContador();
+            
+            // Efecto visual
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = '¡Agregado! ✓';
+            button.style.background = 'linear-gradient(135deg, #27ae60, #229954)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 1500);
+            
+            // Mostrar notificación
+            mostrarNotificacion(`${producto} agregado al carrito`);
+        }
+
+        function actualizarContador() {
+            const contador = document.getElementById("cart-count");
+            if (contador) {
+                contador.textContent = carrito.length;
+            }
+        }
+
+        function mostrarCarrito() {
+            const lista = document.getElementById("lista-carrito");
+            const totalDiv = document.getElementById("total-carrito");
+            
+            if (carrito.length === 0) {
+                lista.innerHTML = '<div class="carrito-empty">🛍️ Tu carrito está vacío.<br>¡Explora nuestros productos!</div>';
+                totalDiv.style.display = 'none';
+            } else {
+                let html = '';
+                let total = 0;
+                
+                carrito.forEach((item, index) => {
+                    html += `
+                        <div class="carrito-item">
+                            <div>
+                                <strong>${item.nombre}</strong><br>
+                                <span style="color: #27ae60; font-weight: bold;">$${item.precio}</span>
+                            </div>
+                            <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                        </div>
+                    `;
+                    total += item.precio;
+                });
+                
+                lista.innerHTML = html;
+                totalDiv.innerHTML = `Total: $${total.toFixed(2)}`;
+                totalDiv.style.display = 'block';
+            }
+        }
+
+        function eliminarDelCarrito(indice) {
+            carrito.splice(indice, 1);
+            mostrarCarrito();
+            actualizarContador();
+        }
+
+        function vaciarCarrito() {
+            if (carrito.length === 0) {
+                mostrarNotificacion('El carrito ya está vacío');
+                return;
+            }
+            
+            carrito = [];
+            mostrarCarrito();
+            actualizarContador();
+            mostrarNotificacion('Carrito vaciado');
+        }
+
+        function procesarCompra() {
+            if (carrito.length === 0) {
+                mostrarNotificacion('Tu carrito está vacío');
+                return;
+            }
+            
+            const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+            mostrarNotificacion(`¡Compra procesada! Total: $${total.toFixed(2)}`);
+            
+            // Simular procesamiento
+            setTimeout(() => {
+                carrito = [];
+                mostrarCarrito();
+                actualizarContador();
+                mostrarNotificacion('¡Gracias por tu compra! Recibirás un email de confirmación.');
+            }, 2000);
+        }
+
+        function enviarFormulario(event) {
+            event.preventDefault();
+            mostrarNotificacion('¡Mensaje enviado! Te contactaremos pronto.');
+            event.target.reset();
+        }
+
+        function mostrarNotificacion(mensaje) {
+            // Crear elemento de notificación
+            const notif = document.createElement('div');
+            notif.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #3498db, #2980b9);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                font-weight: 600;
+                animation: slideIn 0.3s ease-out;
+            `;
+            notif.textContent = mensaje;
+            
+            document.body.appendChild(notif);
+            
+            // Remover después de 3 segundos
+            setTimeout(() => {
+                notif.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => notif.remove(), 300);
+            }, 3000);
+        }
+
+        // Añadir estilos para animaciones
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
